@@ -7,4 +7,7 @@
 4.npm install yarn -g (Install Yarn Globally using below command for linux environment)
 
 ## Created branch for DisplayName for other approach:
-Step9-displayName: The other way of Setting Displaying name within the component
+Step9-displayName: The other way of Setting DisplayName within the component
+
+## Created branch for DefaultProps for other approach:
+Step10-defaultProps: The other way of Setting  defaultProps within the component
