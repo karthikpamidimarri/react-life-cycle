@@ -11,3 +11,6 @@ Step9-displayName: The other way of Setting DisplayName within the component
 
 ## Created branch for DefaultProps for other approach:
 Step10-defaultProps: The other way of Setting  defaultProps within the component
+
+## Created branch for SetState for other approach:
+Step11-Initial State: The other way of setting  Initial State using constructor
