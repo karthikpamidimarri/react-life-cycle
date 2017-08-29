@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 
 class App extends Component {
+  static displayName = "Something-new"
   render() {
     return (
         <h1>hello</h1>
@@ -8,5 +9,6 @@ class App extends Component {
   }
 }
 
-App.displayName = "Whatever-we-wwant"
+//App.displayName = "Whatever-we-want"
 export default App
+
