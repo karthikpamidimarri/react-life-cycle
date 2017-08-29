@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 
 class App extends Component {
-
+  static defaultProps = {
+    someImportArray:[]
+  }
   render() {
     console.log(this.props)
     return (
@@ -12,7 +14,5 @@ class App extends Component {
 
 App.displayName = "WhatEverWeWant"
 
-App.defaultProps = {
-  someImportArray:[]
-}
+
 export default App
