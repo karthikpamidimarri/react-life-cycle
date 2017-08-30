@@ -10,6 +10,7 @@ class App extends Component {
     )
   }
 }
+App.displayName = "App"
 App = loggify(App)
 
 export default App

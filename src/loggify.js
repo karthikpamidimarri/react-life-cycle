@@ -2,7 +2,33 @@ import React, {Component} from 'react'
 import styled from 'styled-components'
 
 export default function loggify(WrappedComponent) {
-    
+
+
+    let originals = {}
+
+    const methodsToLog = ["componentWillMount"]
+
+    methodsToLog.forEach((method) => {
+
+        if(WrappedComponent.prototype[method]){
+            originals[method] = WrappedComponent.prototype[method]
+        }
+
+        WrappedComponent.prototype[method] = function (...args) {
+
+            let original = originals[method]
+
+            console.groupCollapsed(`${WrappedComponent.displayName} called ${method}`)
+
+            console.groupEnd()
+
+            if(original){
+                original = original.bind(this)
+                original(...args)
+            }
+        }
+    })
+
     return class extends Component {
 
         render(){
