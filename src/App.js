@@ -4,12 +4,14 @@ class App extends Component {
   static displayName = "SomethingNew"
 
   constructor(props){
-    super(props);
+    super(props)
+
+    this.firstFunction = this.firstFunction.bind(this)
   }
 
   firstFunction(){
       console.log("First function is executing")
-      console.log("Access the props"+this.props)
+      console.log(this.props)
   }
 
   arrowFunction = () => {
