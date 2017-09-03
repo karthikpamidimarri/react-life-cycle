@@ -6,7 +6,7 @@ export default function loggify(WrappedComponent) {
 
     let originals = {}
 
-    const methodsToLog = ["componentWillMount"]
+    const methodsToLog = ["componentWillMount","componentDidMount"]
 
     methodsToLog.forEach((method) => {
 
