@@ -52,7 +52,7 @@ class App extends Component {
                     }
                 })
             }}>
-                {(showPollChild)? "Show" : "Hide"} PollChild
+                {(showPollChild)? "Hide" : "Show"} PollChild
             </button>
                 {(showPollChild)? <PollChild/> : null}
             </div>
@@ -71,9 +71,14 @@ class PollChild extends Component{
         this.pollData()
     }
 
+    componentWillUnmount(){
+        clearInterval(this.pollInterval)
+    }
+
     pollData = () => {
         this.pollInterval = setInterval(
             () => {
+                console.log("Poll!!")
                 this.setState({
                     poll : Math.random()
                 })
@@ -90,5 +95,5 @@ class PollChild extends Component{
 }
 
 App = loggify(App)
-
+PollChild = loggify(PollChild)
 export default App
