@@ -32,6 +32,8 @@ class App extends Component {
 
 
     render() {
+        let {showPollChild} = this.state
+
         return (
             <div>
               Hello
@@ -43,10 +45,48 @@ class App extends Component {
                   height={200}
                   width={200}
               />
-
+            <button onClick={() =>{
+                this.setState((prevState) => {
+                    return {
+                        showPollChild: !prevState.showPollChild
+                    }
+                })
+            }}>
+                {(showPollChild)? "Show" : "Hide"} PollChild
+            </button>
+                {(showPollChild)? <PollChild/> : null}
             </div>
         )
     }
+}
+
+class PollChild extends Component{
+    static displayName = "PollChild"
+
+    state = {
+        poll : Math.random()
+    }
+
+    componentDidMount(){
+        this.pollData()
+    }
+
+    pollData = () => {
+        this.pollInterval = setInterval(
+            () => {
+                this.setState({
+                    poll : Math.random()
+                })
+            }, 1000
+        )
+    }
+
+    render(){
+        return(
+        <h4>{this.state.poll}</h4>
+        )
+    }
+
 }
 
 App = loggify(App)
