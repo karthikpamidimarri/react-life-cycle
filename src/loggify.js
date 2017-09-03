@@ -27,6 +27,15 @@ export default function loggify(WrappedComponent) {
                 original(...args)
             }
         }
+
+        WrappedComponent.prototype.setState = function(partialState,callback){
+
+            console.groupCollapsed(`${WrappedComponent.displayName} setState` )
+            console.log('partialState',partialState)
+            console.log('callback',callback)
+            console.groupEnd()
+            this.updater.enqueueSetState(this,partialState,callback, 'setState')
+        }
     })
 
     return class extends Component {
