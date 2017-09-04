@@ -1,32 +1,17 @@
 import React, { Component } from 'react'
 import loggify from './loggify'
-import {Parent,H4,H5,Column,Row,ChildContainer,Id,Value,Item,NoKey,
-        Medium,Faster} from "./styled";
+import {Parent,H4,H5,Column,ChildContainer} from "./styled";
+
 
 class App extends Component {
 
     static displayName = "App"
 
     state = {
-        data: "No Data yet!",
         parentPoll: "No data yet!"
     }
 
-    fetchData = () => {
-        console.log("Going to fetch data!")
-        setTimeout(
-            () => {
-                console.log("Data retrieved")
-                this.setState({
-                    data: Math.random()
-                })
-            },
-            1500
-        )
-    }
-
     componentDidMount(){
-        this.fetchData()
         this.createParentPoll()
         this.canvasCtx = this.refs.appCanvas.getContext('2d')
         this.canvasCtx.fillStyle = "blue"
@@ -48,6 +33,18 @@ class App extends Component {
             canvasCtx.fill()
         }
     }
+
+    componentWillUnMount(){
+        clearInterval(this.pollInterval)
+    }
+
+    shouldComponentDidUpdate(nextProps,nextState){
+        if(nextState.parentPoll !== this.state.parentPoll){
+            return true
+        }
+        return false
+    }
+
     createParentPoll(){
         this.pollInterval = setInterval(
             () =>{
@@ -57,12 +54,12 @@ class App extends Component {
         )
     }
     render() {
-        let {showPollChild,parentPoll,data} = this.state
+        let {showPollChild,parentPoll} = this.state
 
         return (
             <Parent>
                 <Column>
-                    <H4>{data}</H4>
+
                     <H4>{parentPoll}</H4>
                     <canvas
                         ref={"appCanvas"}
