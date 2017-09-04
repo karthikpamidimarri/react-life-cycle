@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import loggify from './loggify'
 import {Parent,H4,H5,Column,ChildContainer} from "./styled";
-
+import {BigList} from './lists'
 
 class App extends Component {
 
@@ -80,6 +80,9 @@ class App extends Component {
                             parentPoll = {parentPoll}
                         /> : null}
                 </Column>
+                <Column>
+                    <BigList/>
+                </Column>
             </Parent>
         )
     }
@@ -139,6 +142,6 @@ function getRandomInt(min,max){
     max = Math.floor(max)
     return Math.floor(Math.random() * (max - min + 1)) + min
 }
-App = loggify(App)
+//App = loggify(App)
 //PollChild = loggify(PollChild)
 export default App
