@@ -6,7 +6,12 @@ export default function loggify(WrappedComponent) {
 
     let originals = {}
 
-    const methodsToLog = ["componentWillMount","componentDidMount","componentWillUnmount"]
+    const methodsToLog = [
+        "componentWillMount",
+        "componentDidMount",
+        "componentWillUnmount",
+        "componentWillReceiveProps"
+    ]
 
     methodsToLog.forEach((method) => {
 
@@ -20,7 +25,12 @@ export default function loggify(WrappedComponent) {
 
             console.groupCollapsed(`${WrappedComponent.displayName} called ${method}`)
 
+            if(method === "componentWillReceiveProps"){
+                console.log('nextProps', args[0])
+            }
+
             console.groupEnd()
+
 
             if(original){
                 original = original.bind(this)
