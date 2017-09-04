@@ -12,7 +12,8 @@ export default function loggify(WrappedComponent) {
         "componentWillUnmount",
         "componentWillReceiveProps",
         "shouldComponentUpdate",
-        "componentWillUpdate"
+        "componentWillUpdate",
+        "componentDidUpdate"
     ]
 
     methodsToLog.forEach((method) => {
@@ -37,6 +38,11 @@ export default function loggify(WrappedComponent) {
             if(method === "shouldComponentUpdate" || "componentWillUpdate")
             {
                 console.log('nextState', args[1])
+            }
+
+            if(method === "componentDidUpdate"){
+                console.log('nextProps',args[0])
+                console.log('nextState',args[1])
             }
             console.groupEnd()
 

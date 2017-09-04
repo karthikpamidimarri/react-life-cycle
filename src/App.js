@@ -40,6 +40,14 @@ class App extends Component {
         }
     }
 
+    componentDidUpdate(prevProps,prevState){
+        if(prevState.parentPoll !== this.state.parentPoll){
+            let {canvasCtx} = this
+            canvasCtx.fillStyle = (this.state.parentPoll % 2 === 1) ? "green" : "red"
+            canvasCtx.arc(75,75,50,0,2*Math.PI)
+            canvasCtx.fill()
+        }
+    }
     createParentPoll(){
         this.pollInterval = setInterval(
             () =>{
